@@ -1,18 +1,24 @@
+import { Routes, Route, Link } from "react-router-dom";
+import { About } from "./pages/Aboutpage";
+import { Blog } from "./pages/Blogpage";
+import { Home } from "./pages/Homepage";
+import { Notfound } from "./pages/Notfoundpage";
 import "./App.css";
 
 function App() {
   return (
     <>
       <header>
-        <a href="/">Home</a>
-        <a href="/posts">Blog</a>
-        <a href="/about">About</a>
+        <Link to="/">Home</Link>
+        <Link to="/posts">Blog</Link>
+        <Link to="/about">About</Link>
       </header>
-      <div>
-        <h1>
-          Get started with react router dom v6
-        </h1>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/posts" element={<Blog />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<Notfound />} />
+      </Routes>
     </>
   );
 }
