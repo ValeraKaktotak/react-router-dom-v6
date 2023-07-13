@@ -4,7 +4,7 @@ export const Notfound = () => {
       <h1>Notfound</h1>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit a
-        dignissimos id at nisi provident!
+        dignissimos id at nisi provident! <a href="/">home</a>
       </p>
     </div>
   );
