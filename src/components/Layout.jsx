@@ -10,7 +10,7 @@ export const Layout = () => {
         <NavLink to="/" className={setActive}>
           Home
         </NavLink>
-        <CustomLink to="/blog" className={setActive}>
+        <CustomLink to="/posts" className={setActive}>
           Blog
         </CustomLink>
         <NavLink
