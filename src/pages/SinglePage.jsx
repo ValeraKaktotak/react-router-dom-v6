@@ -5,6 +5,7 @@ export const SinglePage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [post, setPosts] = useState(null);
+
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then((res) => res.json())
