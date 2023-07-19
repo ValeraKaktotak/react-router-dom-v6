@@ -12,7 +12,7 @@ export const LoginPage = () => {
     event.preventDefault();
     const form = event.target;
     const user = form.username.value;
-    signin(user, () => navigate(fromPage, {replace: true}));
+    signin(user, () => navigate(fromPage, { replace: true }));
   };
 
   return (

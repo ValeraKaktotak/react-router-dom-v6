@@ -1,11 +1,17 @@
-import { useAuth } from "hook/useAuth"
+import { useAuth } from "hook/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export const NewPost = () => {
-    const {user} = useAuth()
-    return(
-        <div>
-            <h1>Hello {user}!!!</h1>
-            Add new post...
-        </div>
-    )
-}
+  const { user, signout } = useAuth();
+  const navigate = useNavigate()
+
+  console.log(signout)
+
+  return (
+    <div>
+      <h1>Hello {user}!!!</h1>
+      <p>Add new post...</p>
+      <button onClick={() => signout(() => navigate('/', {replace:true}))}>Log Out</button>
+    </div>
+  );
+};
