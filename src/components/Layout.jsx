@@ -10,16 +10,14 @@ export const Layout = () => {
         <NavLink to="/" className={setActive}>
           Home
         </NavLink>
-        <CustomLink to="/posts" className={setActive}>
-          Blog
-        </CustomLink>
+        <CustomLink to="/posts">Blog</CustomLink>
         <NavLink
           to="/about"
           className={({ isActive }) => (isActive ? "my-active-link" : "")}>
           About
         </NavLink>
       </header>
-      <div className="App">
+      <div className="App grey">
         <Outlet />
       </div>
       <footer>Footer2023</footer>
