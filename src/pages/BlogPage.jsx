@@ -1,10 +1,15 @@
+import { SearchPosts } from "components/SearchPosts";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export const Blog = () => {
-  const location = useLocation()
-  console.log(location)
   const [posts, setPosts] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchParam = searchParams.get("post") || "";
+  const latestParam = searchParams.has("latest");
+  const newPosts = latestParam ? 80 : 1;
+
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((res) => res.json())
@@ -14,13 +19,22 @@ export const Blog = () => {
   return (
     <div>
       <h1>Blog</h1>
-      <Link to="/posts/new" >Add new post</Link>
+      <SearchPosts
+        setSearchParams={setSearchParams}
+        searchParam={searchParam}
+        latestParam={latestParam}
+      />
+      <Link to="/posts/new">Add new post</Link>
       <p>
-        {posts.map((post) => (
-          <Link to={`/posts/${post.id}`} key={post.id}>
-            <li>{post.title}</li>
-          </Link>
-        ))}
+        {posts
+          .filter(
+            (post) => post.title.includes(searchParam) && post.id >= newPosts
+          )
+          .map((post) => (
+            <Link to={`/posts/${post.id}`} key={post.id}>
+              <li>{post.title}</li>
+            </Link>
+          ))}
       </p>
     </div>
   );

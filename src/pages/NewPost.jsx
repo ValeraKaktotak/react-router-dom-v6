@@ -5,8 +5,6 @@ export const NewPost = () => {
   const { user, signout } = useAuth();
   const navigate = useNavigate()
 
-  console.log(signout)
-
   return (
     <div>
       <h1>Hello {user}!!!</h1>
